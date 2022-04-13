@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274894879097",
+    "project_id": "resturant-flutter-app",
+    "storage_bucket": "resturant-flutter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274894879097:android:def81887b02228fe2d97a8",
+        "android_client_info": {
+          "package_name": "com.example.resturant_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274894879097-jnrq08pem6sn0ubpe994br1ne3hpp39l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxHqInyuxMXJ4x9QOAu_veEyVAhEa5ZY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274894879097-jnrq08pem6sn0ubpe994br1ne3hpp39l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
