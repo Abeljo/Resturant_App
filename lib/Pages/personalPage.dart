@@ -21,23 +21,53 @@ class _personalPageState extends State<personalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
+        body: Column(
+      children: [
+        SizedBox(
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Center(
-              child: Text(user.email!),
+            Container(
+              child: CircleAvatar(
+                backgroundColor: Colors.brown,
+                radius: 50,
+                child: Icon(
+                  Icons.person,
+                  size: 60,
+                ),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(user.metadata.creationTime.toString()),
-            ElevatedButton.icon(
-                onPressed: () => FirebaseAuth.instance.signOut(),
-                icon: Icon(Icons.arrow_back),
-                label: Text('sign out'))
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(user.email!, style: TextStyle(fontSize: 20)),
+              ],
+            )
           ],
         ),
-      ),
-    );
+        SizedBox(
+          height: 20,
+        ),
+        Text(
+          'Member Since: ',
+          style: TextStyle(fontSize: 18),
+        ),
+        Text(user.metadata.creationTime.toString()),
+        SizedBox(
+          height: 100,
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width - 50,
+          height: 50,
+          child: ElevatedButton.icon(
+              onPressed: () => FirebaseAuth.instance.signOut(),
+              icon: Icon(Icons.arrow_back),
+              label: Text('Sign Out')),
+        )
+      ],
+    ));
   }
 }
