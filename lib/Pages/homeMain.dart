@@ -18,41 +18,16 @@ class homeMain extends StatefulWidget {
 class _homeMainState extends State<homeMain> {
   int _selectedIndex = 0;
 
-  final Screen = [
-    authPage(),
-    homeMain(),
-    reservationPage(),
-    menuPage(),
-    staffPage(),
-    personalPage()
-  ];
+  final Screen = [reservationPage(), menuPage(), staffPage(), personalPage()];
 
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: Text(user.email!),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(user.metadata.creationTime.toString()),
-          ElevatedButton.icon(
-              onPressed: () => FirebaseAuth.instance.signOut(),
-              icon: Icon(Icons.arrow_back),
-              label: Text('sign out'))
-        ],
-      ),
+      body: Screen[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Reservation',
