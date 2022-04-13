@@ -1,12 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:resturant_app/Pages/authPage.dart';
 import 'package:resturant_app/Pages/menuPage.dart';
 import 'package:resturant_app/Pages/personalPage.dart';
 import 'package:resturant_app/Pages/reservationPage.dart';
 import 'package:resturant_app/Pages/staffPage.dart';
+//firebase core
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -55,7 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 1,
           centerTitle: true,
         ),
-        body: Screen[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -86,6 +90,20 @@ class _MyHomePageState extends State<MyHomePage> {
             setState(() {
               _selectedIndex = index;
             });
+          },
+        ),
+        body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasData) {
+              return Screen[_selectedIndex];
+            }
+            return Screen[0];
           },
         ));
   }
