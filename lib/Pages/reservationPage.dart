@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class reservationPage extends StatefulWidget {
@@ -17,12 +18,14 @@ class _reservationPageState extends State<reservationPage> {
   final CollectionReference _orders =
       FirebaseFirestore.instance.collection('orders');
 
+  final user = FirebaseAuth.instance.currentUser!;
+
   Future<void> orderNow([DocumentSnapshot? documentSnapshot]) async {
     final String? name = nameColtrol.text;
     final int? phone = int.tryParse(phoneControl.text);
     final String? date = dateColtrol.text;
     final int? person = int.tryParse(personColtrol.text);
-
+    final String? acc = user.email;
     if (documentSnapshot != null) {
       nameColtrol.text = documentSnapshot['name'].toString();
       phoneControl.text = documentSnapshot['phone'].toString();
@@ -31,8 +34,13 @@ class _reservationPageState extends State<reservationPage> {
 
       if (name != null && phone != null && date != null && person != null) {
         personColtrol.text = '';
-        await _orders.add(
-            {"name": name, "phone": phone, "date": date, "person": person});
+        await _orders.add({
+          "name": name,
+          "phone": phone,
+          "date": date,
+          "person": person,
+          "acc": acc
+        });
       }
     }
     nameColtrol.text = '';
@@ -59,10 +67,68 @@ class _reservationPageState extends State<reservationPage> {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.orange,
+                                      radius: 40,
+                                      child: Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                        size: 50,
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(user.email!,
+                                          style: TextStyle(fontSize: 20)),
+                                      Text(
+                                        'Member Since: ',
+                                        style: TextStyle(
+                                            fontSize: 18, color: Colors.orange),
+                                      ),
+                                      Text(user.metadata.creationTime
+                                          .toString()),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 50,
+                                height: 50,
+                                child: ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange),
+                                    onPressed: () =>
+                                        FirebaseAuth.instance.signOut(),
+                                    icon: Icon(Icons.arrow_back),
+                                    label: Text('Sign Out')),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ),
                           Container(
                             margin: EdgeInsets.only(left: 50, top: 30),
                             child: Text(
-                              'Welcome To the reservation page',
+                              'Make A Reservation here',
                               style: TextStyle(fontSize: 20),
                             ),
                           ),
@@ -131,9 +197,12 @@ class _reservationPageState extends State<reservationPage> {
                             height: 20,
                           ),
                           Container(
+                            height: 50,
                             margin: EdgeInsets.symmetric(horizontal: 40),
                             width: MediaQuery.of(context).size.width - 50,
                             child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.orange),
                                 onPressed: () async {
                                   orderNow(documentSnapshot);
                                 },

@@ -27,15 +27,16 @@ class _personalPageState extends State<personalPage> {
           height: 30,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               child: CircleAvatar(
-                backgroundColor: Colors.brown,
-                radius: 50,
+                backgroundColor: Colors.orange,
+                radius: 40,
                 child: Icon(
                   Icons.person,
-                  size: 60,
+                  color: Colors.white,
+                  size: 50,
                 ),
               ),
             ),
@@ -44,6 +45,11 @@ class _personalPageState extends State<personalPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(user.email!, style: TextStyle(fontSize: 20)),
+                Text(
+                  'Member Since: ',
+                  style: TextStyle(fontSize: 18, color: Colors.orange),
+                ),
+                Text(user.metadata.creationTime.toString()),
               ],
             )
           ],
@@ -51,22 +57,20 @@ class _personalPageState extends State<personalPage> {
         SizedBox(
           height: 20,
         ),
-        Text(
-          'Member Since: ',
-          style: TextStyle(fontSize: 18),
-        ),
-        Text(user.metadata.creationTime.toString()),
-        SizedBox(
-          height: 100,
-        ),
         Container(
           width: MediaQuery.of(context).size.width - 50,
           height: 50,
           child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(primary: Colors.orange),
               onPressed: () => FirebaseAuth.instance.signOut(),
               icon: Icon(Icons.arrow_back),
               label: Text('Sign Out')),
-        )
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        
+        
       ],
     ));
   }
