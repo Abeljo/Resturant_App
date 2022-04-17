@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -38,13 +39,14 @@ class _staffPageState extends State<staffPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      child: Image.network(
-                                          documentSnapshot['img'],
-                                          fit: BoxFit.fitHeight)),
+                                    height: MediaQuery.of(context).size.height,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: CachedNetworkImage(
+                                      imageUrl: documentSnapshot['img'],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   Container(
                                     margin: EdgeInsets.all(20),
                                     child: Column(

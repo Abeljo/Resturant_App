@@ -171,23 +171,25 @@ class _menuPageState extends State<menuPage> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  margin:
-                                                      EdgeInsets.only(top: 20),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  height: 250,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      50,
-                                                  child: Image.network(
-                                                    documentSnapshot['img'],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
+                                                    margin: EdgeInsets.only(
+                                                        top: 20),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    height: 250,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width -
+                                                            50,
+                                                    child: CachedNetworkImage(
+                                                      imageUrl:
+                                                          documentSnapshot[
+                                                              'img'],
+                                                      fit: BoxFit.contain,
+                                                    )),
                                                 SizedBox(height: 50),
                                                 ElevatedButton.icon(
                                                   style: ElevatedButton.styleFrom(
@@ -226,8 +228,8 @@ class _menuPageState extends State<menuPage> {
                                           ),
                                           height: 160,
                                           width: 260,
-                                          child: Image.network(
-                                            documentSnapshot['img'],
+                                          child: CachedNetworkImage(
+                                            imageUrl: documentSnapshot['img'],
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -376,8 +378,9 @@ class _menuPageState extends State<menuPage> {
                                                           .size
                                                           .width -
                                                       50,
-                                                  child: Image.network(
-                                                    documentSnapshot['img'],
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        documentSnapshot['img'],
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -411,14 +414,14 @@ class _menuPageState extends State<menuPage> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Container(
-                                            height: 130,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: Image.network(
-                                              documentSnapshot['img'],
-                                              fit: BoxFit.cover,
-                                            )),
+                                          height: 130,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: CachedNetworkImage(
+                                            imageUrl: documentSnapshot['img'],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                         Container(
                                           //margin: EdgeInsets.only(top: 10),
                                           child: Text(
