@@ -18,7 +18,7 @@ class homeMain extends StatefulWidget {
 class _homeMainState extends State<homeMain> {
   int _selectedIndex = 0;
 
-  final Screen = [reservationPage(), menuPage(), staffPage(), personalPage()];
+  final Screen = [menuPage(), reservationPage(), staffPage(), personalPage()];
 
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -29,12 +29,12 @@ class _homeMainState extends State<homeMain> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Reservation',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.menu),
             label: 'Menu',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Reservation',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people),

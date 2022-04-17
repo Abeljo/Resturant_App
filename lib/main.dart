@@ -43,15 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 40,
           title: Text(
-            'main screen',
+            'Hotel Addis',
             style: TextStyle(color: Colors.brown),
           ),
           backgroundColor: Colors.white,
           elevation: 1,
           centerTitle: true,
         ),
-        body: /* StreamBuilder<User?>(
+        body: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -64,8 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
             }
             return authPage();
           },
-        ) */
-            menuPage());
+        )
+        //menuPage()
+        // staffPage()
+        );
   }
 }
 /* In this startin page we only impliment email signin 
