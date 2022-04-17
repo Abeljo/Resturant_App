@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 1,
           centerTitle: true,
         ),
-        body: StreamBuilder<User?>(
+        body: /* StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -64,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
             }
             return authPage();
           },
-        ));
+        ) */
+            menuPage());
   }
 }
 /* In this startin page we only impliment email signin 
