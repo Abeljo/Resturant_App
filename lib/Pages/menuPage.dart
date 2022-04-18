@@ -16,6 +16,8 @@ class _menuPageState extends State<menuPage> {
 
   String bg = 'all';
 
+  String drink = 'Delicious Food';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +40,14 @@ class _menuPageState extends State<menuPage> {
                           margin: EdgeInsets.only(top: 5, left: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
-                                'Let\'s eat ',
+                                'Let\'s have ',
                                 style: TextStyle(
                                     fontSize: 35, fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Delicious food',
+                                '${drink}',
                                 style: TextStyle(
                                     fontSize: 35, fontWeight: FontWeight.w300),
                               ),
@@ -62,6 +64,7 @@ class _menuPageState extends State<menuPage> {
                                   onPressed: () {
                                     setState(() {
                                       bg = 'all';
+                                      drink = 'Delicious Food';
                                     });
                                   },
                                   icon: Icon(Icons.fastfood),
@@ -72,6 +75,7 @@ class _menuPageState extends State<menuPage> {
                                   onPressed: () {
                                     setState(() {
                                       bg = 'drink';
+                                      drink = 'Delicious Drink';
                                     });
                                   },
                                   icon: Icon(Icons.local_drink),
