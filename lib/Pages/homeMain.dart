@@ -42,7 +42,7 @@ class _homeMainState extends State<homeMain> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.brown,
+        selectedItemColor: Colors.orange,
         unselectedItemColor: Color.fromARGB(255, 238, 205, 193),
         onTap: (index) {
           setState(() {

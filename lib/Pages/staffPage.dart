@@ -30,56 +30,38 @@ class _staffPageState extends State<staffPage> {
                       showModalBottomSheet(
                           isScrollControlled: true,
                           elevation: 5,
-                          backgroundColor: Colors.orange,
+                          // backgroundColor: Colors.orange,
                           context: context,
                           builder: (context) => Container(
-                              height: 400,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              height: 600,
+                              child: Column(
                                 children: [
+                                  Center(
+                                    child: Text(
+                                      documentSnapshot['name'],
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          color: Color.fromARGB(255, 0, 0, 0)),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      documentSnapshot['type'],
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          color: Color.fromARGB(
+                                              255, 114, 111, 111)),
+                                    ),
+                                  ),
                                   Container(
-                                    height: MediaQuery.of(context).size.height,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
+                                    height: MediaQuery.of(context).size.height -
+                                        365,
+                                    width: MediaQuery.of(context).size.width,
                                     child: CachedNetworkImage(
                                       imageUrl: documentSnapshot['img'],
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.all(20),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          documentSnapshot['name'],
-                                          style: TextStyle(
-                                              fontSize: 30,
-                                              color: Colors.white),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          documentSnapshot['type'],
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.white,
-                                              overflow: TextOverflow.clip),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          documentSnapshot['type'],
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.white,
-                                              overflow: TextOverflow.ellipsis),
-                                        ),
-                                      ],
-                                    ),
-                                  )
                                 ],
                               )));
                     },
@@ -92,6 +74,7 @@ class _staffPageState extends State<staffPage> {
                             title: Text(documentSnapshot['name']),
                             subtitle: Text(documentSnapshot['type']),
                             leading: CircleAvatar(
+                              radius: 30,
                               backgroundImage:
                                   NetworkImage(documentSnapshot['img']),
                             ),
