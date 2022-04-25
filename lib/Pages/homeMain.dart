@@ -27,6 +27,7 @@ class _homeMainState extends State<homeMain> {
     return Scaffold(
       body: Screen[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.menu),
@@ -43,7 +44,7 @@ class _homeMainState extends State<homeMain> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.orange,
-        unselectedItemColor: Color.fromARGB(255, 238, 205, 193),
+        unselectedItemColor: Color.fromARGB(255, 247, 212, 60),
         onTap: (index) {
           setState(() {
             _selectedIndex = index;

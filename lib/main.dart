@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           toolbarHeight: 40,
           title: Text(
             'Hotel Addis',
-            style: TextStyle(color: Colors.brown),
+            style: TextStyle(color: Colors.orange),
           ),
           backgroundColor: Colors.white,
           elevation: 1,

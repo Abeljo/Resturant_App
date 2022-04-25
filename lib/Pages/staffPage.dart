@@ -75,8 +75,8 @@ class _staffPageState extends State<staffPage> {
                             subtitle: Text(documentSnapshot['type']),
                             leading: CircleAvatar(
                               radius: 30,
-                              backgroundImage:
-                                  NetworkImage(documentSnapshot['img']),
+                              backgroundImage: CachedNetworkImageProvider(
+                                  documentSnapshot['img']),
                             ),
                           ),
                           shadowColor: Colors.orange,
