@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:date_format/date_format.dart';
 
 class reservationPage extends StatefulWidget {
   const reservationPage({Key? key}) : super(key: key);
@@ -50,6 +51,28 @@ class _reservationPageState extends State<reservationPage> {
 
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('You have successfully placed an order see You soon')));
+  }
+
+  Future datePick(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2030),
+    );
+
+    final TimeOfDay? pickedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    var formattedDate = formatDate(picked!, [yyyy, '-', mm, '-', dd]);
+
+    if (picked != null) {
+      setState(() {
+        dateColtrol.text = formattedDate + ' ' + pickedTime.toString();
+      });
+    }
   }
 
   @override
@@ -164,19 +187,34 @@ class _reservationPageState extends State<reservationPage> {
                             ),
                           ),
                           SizedBox(height: 20),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                            ),
-                            width: MediaQuery.of(context).size.width - 50,
-                            child: TextFormField(
-                              controller: dateColtrol,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Date Of Appearence',
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 10,
+                                ),
+                                width: MediaQuery.of(context).size.width / 1.8,
+                                child: TextFormField(
+                                  controller: dateColtrol,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Date Of Appearence',
+                                  ),
+                                  keyboardType: TextInputType.none,
+                                ),
                               ),
-                              keyboardType: TextInputType.number,
-                            ),
+                              Container(
+                                child: ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange),
+                                    onPressed: () {
+                                      datePick(context);
+                                    },
+                                    icon: Icon(Icons.date_range),
+                                    label: Text('Pick Date')),
+                              )
+                            ],
                           ),
                           SizedBox(height: 20),
                           Container(

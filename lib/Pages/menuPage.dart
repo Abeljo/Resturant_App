@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class menuPage extends StatefulWidget {
   const menuPage({Key? key}) : super(key: key);
@@ -75,7 +76,7 @@ class _menuPageState extends State<menuPage> {
                                   onPressed: () {
                                     setState(() {
                                       bg = 'drink';
-                                      drink = 'Delicious Drink';
+                                      drink = 'Wonderfull Drink';
                                     });
                                   },
                                   icon: Icon(Icons.local_drink),
@@ -190,9 +191,13 @@ class _menuPageState extends State<menuPage> {
                                                           .size
                                                           .width -
                                                       50,
-                                                  child: CachedNetworkImage(
+                                                  child: /* CachedNetworkImage(
                                                     imageUrl:
                                                         documentSnapshot['img'],
+                                                    fit: BoxFit.cover,
+                                                  ), */
+                                                      Image.network(
+                                                    documentSnapshot['img'],
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -208,7 +213,12 @@ class _menuPageState extends State<menuPage> {
                                                       primary: Colors
                                                           .orange //elevated btton background color
                                                       ),
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    MapsLauncher
+                                                        .launchCoordinates(
+                                                            9.036424479831105,
+                                                            38.75042749414433);
+                                                  },
                                                   icon:
                                                       Icon(Icons.location_city),
                                                   label: Text('View on map'),
@@ -229,8 +239,12 @@ class _menuPageState extends State<menuPage> {
                                           height: 130,
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          child: CachedNetworkImage(
+                                          child: /*  CachedNetworkImage(
                                             imageUrl: documentSnapshot['img'],
+                                            fit: BoxFit.cover,
+                                          ), */
+                                              Image.network(
+                                            documentSnapshot['img'],
                                             fit: BoxFit.cover,
                                           ),
                                         ),
