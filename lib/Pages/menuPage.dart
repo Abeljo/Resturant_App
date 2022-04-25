@@ -191,15 +191,15 @@ class _menuPageState extends State<menuPage> {
                                                           .size
                                                           .width -
                                                       50,
-                                                  child: /* CachedNetworkImage(
+                                                  child:  CachedNetworkImage(
                                                     imageUrl:
                                                         documentSnapshot['img'],
                                                     fit: BoxFit.cover,
-                                                  ), */
-                                                      Image.network(
+                                                  ), 
+                                                      /* Image.network(
                                                     documentSnapshot['img'],
                                                     fit: BoxFit.cover,
-                                                  ),
+                                                  ), */
                                                 ),
                                                 SizedBox(height: 50),
                                                 ElevatedButton.icon(
@@ -239,14 +239,14 @@ class _menuPageState extends State<menuPage> {
                                           height: 130,
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          child: /*  CachedNetworkImage(
+                                          child:  CachedNetworkImage(
                                             imageUrl: documentSnapshot['img'],
                                             fit: BoxFit.cover,
-                                          ), */
-                                              Image.network(
+                                          ),
+                                              /* Image.network(
                                             documentSnapshot['img'],
                                             fit: BoxFit.cover,
-                                          ),
+                                          ), */
                                         ),
                                         Container(
                                           //margin: EdgeInsets.only(top: 10),

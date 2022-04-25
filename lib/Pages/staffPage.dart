@@ -57,7 +57,11 @@ class _staffPageState extends State<staffPage> {
                                     height: MediaQuery.of(context).size.height -
                                         365,
                                     width: MediaQuery.of(context).size.width,
-                                    child: CachedNetworkImage(
+                                    child: /* Image.network(
+                                      documentSnapshot['img'],
+                                      fit: BoxFit.cover,
+                                    ), */
+                                        CachedNetworkImage(
                                       imageUrl: documentSnapshot['img'],
                                       fit: BoxFit.cover,
                                     ),
@@ -68,19 +72,39 @@ class _staffPageState extends State<staffPage> {
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 100,
-                      child: Center(
-                        child: Card(
-                          child: ListTile(
-                            title: Text(documentSnapshot['name']),
-                            subtitle: Text(documentSnapshot['type']),
-                            leading: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: CachedNetworkImageProvider(
-                                  documentSnapshot['img']),
-                            ),
-                          ),
-                          shadowColor: Colors.orange,
-                        ),
+                      child: Card(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 100,
+                                child: /* Image.network(
+                                  documentSnapshot['img'],
+                                  fit: BoxFit.cover,
+                                ), */
+
+                                    CachedNetworkImage(
+                                  imageUrl: documentSnapshot['img'],
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    documentSnapshot['name'],
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black),
+                                  ),
+                                  Text(
+                                    documentSnapshot['type'],
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                            ]),
                       ),
                     ),
                   );
