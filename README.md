@@ -1,17 +1,9 @@
 # resturant_app
 
-A new Flutter project.
+Team members:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Resturant_App
+1, Abel Yosef     14950/20
+2, Alazar Tsegaye 15170/20
+3, Amanuel Yewondwossen 14857/20
+4, Eliyas Asrat 14621/20
+5, Ebrahim Shifaw 15958/20
